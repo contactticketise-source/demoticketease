@@ -18,7 +18,7 @@ export async function onRequest({ request, env, next }) {
   const [u, p] = atob(auth.slice(6)).split(":");
   if (u === user && p === pass) return next();
 
-  return new Response("Forbidden", {
+  return new Response("Mot de passe érroné", {
     status: 403,
     headers: { "WWW-Authenticate": 'Basic realm="TicketEase"' },
   });
