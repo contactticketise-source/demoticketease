@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TicketEase — Espace Pro (Démo)</title>
   <meta name="color-scheme" content="dark light" />
@@ -45,9 +44,9 @@
         --g-pink:  rgba(255,105,180,.18);
         --g-green-soft: rgba(44,209,158,.14);
         --g-blue-deep: #0b3aa2;
-	--muted:#3b4b5c;           /* un poil plus contrasté en clair */
-        --chip-bg:#e9eef5;         /* pastille claire */
-        --chip-text:#0c1723;       /* texte très lisible */
+        --muted:#3b4b5c;
+        --chip-bg:#e9eef5;
+        --chip-text:#0c1723;
       }
     }
 
@@ -55,14 +54,12 @@
     html,body{ height:100% }
     body{
       margin:0; padding:32px; color:var(--text); font-family:var(--sans); letter-spacing:.1px;
-      /* Dégradé premium latéral : verts & roses sur les côtés, discret au centre */
       background:
         radial-gradient(800px 520px at -12% 35%, var(--g-green), transparent 55%),
         radial-gradient(820px 520px at 112% 35%, var(--g-pink), transparent 55%),
         radial-gradient(700px 420px at 50% 120%, var(--g-green-soft), transparent 65%),
         var(--bg);
     }
-    /* Ruban dégradé en bas (derrière le contenu) */
     .ribbon{
       position:fixed; left:0; right:0; bottom:0; height:120px; pointer-events:none; z-index:0;
       background:
@@ -70,7 +67,6 @@
           color-mix(in oklab, #23d7a2 80%, transparent) 0%,
           color-mix(in oklab, #ff73bf 90%, transparent) 45%,
           color-mix(in oklab, var(--g-blue-deep) 100%, transparent) 100%);
-      /* Fondu vers le haut pour ne pas “manger” le contenu */
       -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,0));
               mask-image: linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,0));
       filter: saturate(1.1) blur(0.2px);
@@ -78,7 +74,6 @@
 
     .wrap{ max-width:1080px; margin:0 auto; position:relative; z-index:1 }
 
-    /* Header */
     header{ display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:18px }
     .brand{ display:flex; align-items:center; gap:14px }
     .logo{
@@ -89,7 +84,6 @@
     .title{ margin:0; font-weight:800; font-size:22px }
     .subtitle{ margin:2px 0 0; color:var(--muted); font-size:13px }
 
-    /* Hero */
     .hero{
       display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 22px;
       background:var(--glass); border:var(--glass-border); border-radius:var(--radius-xl); box-shadow:var(--shadow-md)
@@ -97,18 +91,15 @@
     .hero h2{ margin:0 0 4px 0; font-size:20px }
     .hero .sub{ color:var(--muted); font-size:13px }
 
-    /* Layout */
     .grid{ display:grid; gap:16px; grid-template-columns:1.18fr .82fr }
     @media (max-width:980px){ .grid{ grid-template-columns:1fr } }
 
-    /* Surfaces */
     .card{
       background:var(--card); border:var(--glass-border); border-radius:var(--radius-xl); box-shadow:var(--shadow-md); padding:18px
     }
     .stack{ display:grid; gap:14px }
     .section-title{ margin:0; font-weight:700; letter-spacing:.2px }
 
-    /* Forms & buttons */
     label{ display:block; font-size:12px; color:var(--muted); margin:0 0 6px 2px }
     .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end }
     .cols2{ display:grid; gap:12px; grid-template-columns:1fr 1fr }
@@ -142,19 +133,17 @@
     }
     @keyframes spin{ to{ transform:translateY(-50%) rotate(360deg) } }
 
-    /* Status chips */
     .chips{ display:flex; gap:8px; flex-wrap:wrap }
     .chip{
-  	display:inline-flex; align-items:center; gap:7px;
-  	padding:7px 10px; border-radius:999px; font-size:12px;
-  	background:var(--chip-bg);
-  	color:var(--chip-text);
-  	border:1px solid var(--border);
+      display:inline-flex; align-items:center; gap:7px;
+      padding:7px 10px; border-radius:999px; font-size:12px;
+      background:var(--chip-bg);
+      color:var(--chip-text);
+      border:1px solid var(--border);
     }
     .dot{ width:8px; height:8px; border-radius:50% }
     .dot.ok{ background:var(--ok) } .dot.warn{ background:var(--warn) } .dot.off{ background:#586471 }
 
-    /* Code areas */
     pre{
       font-family:var(--mono); font-size:12.5px; background:#0a0f15; color:#d2d9e0; border:1px solid var(--border);
       border-radius:12px; padding:12px; overflow:auto; min-height:120px; max-height:320px
@@ -166,10 +155,8 @@
 
     .kbd{ font-family:var(--mono); font-size:12px; background:rgba(255,255,255,.06); padding:3px 7px; border-radius:8px; border:1px solid var(--border) }
 
-    /* Toast */
     .toast{ position:fixed; right:18px; bottom:18px; background:var(--card); color:var(--text);
       border:var(--glass-border); border-radius:12px; padding:10px 12px; box-shadow:var(--shadow-md); max-width:420px }
-
     footer{ margin-top:16px; color:var(--muted); font-size:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center }
   </style>
 </head>
@@ -225,7 +212,7 @@
         <button id="statusPowens" class="btn btn-ghost">Statut connexion</button>
       </div>
 
-      <!-- Intent courant repliable par défaut -->
+      <!-- Intent courant repliable -->
       <details style="margin-top:6px">
         <summary>Intent courant</summary>
         <div class="cols2" style="margin-top:10px">
@@ -280,8 +267,8 @@
           <button id="txns" class="btn btn-ghost">/powens/transactions</button>
         </div>
         <div class="inp" style="margin-top:8px">
-          <label for="txAccount">AccountId utilisé pour /transactions</label>
-          <input id="txAccount" placeholder="accountId" />
+          <label for="txAccount">AccountId utilisé pour /transactions (facultatif)</label>
+          <input id="txAccount" placeholder="laisser vide = défaut" />
         </div>
       </details>
 
@@ -317,9 +304,7 @@
   </footer>
 </div>
 
-<!-- Ruban dégradé bas de page (hors flux, décoratif) -->
 <div class="ribbon" aria-hidden="true"></div>
-
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
 <script>
@@ -337,7 +322,7 @@
     get k(){ return {
       base:'TE_API_BASE', last:'TE_LAST_INTENT', acc:'TE_ACCOUNT_ID', email:'TE_CUSTOMER_EMAIL',
       txacc:'TE_TX_ACCOUNT', logo:'TE_LOGO_URL', lim:'TE_TARGET_LIMIT', sk:'TE_SHORTCUT_KEY',
-      connHint:'TE_CONN_HINT' // 'connected' | ''
+      connHint:'TE_CONN_HINT'
     }}
   };
   const getLS = (k,f='') => localStorage.getItem(k) || f;
@@ -384,9 +369,7 @@
 
   // Hint de connexion optimiste si on revient de la webview
   if(getLS(LS.k.connHint,'')){
-    // Affiche vert tout de suite, puis vérifie réellement
     setConn('connected');
-    // vérification silencieuse
     (async ()=>{ try{
       const r = await api('/powens/connect/status');
       const ok = !!(r && (r.connected || r.status==='connected' || r.ok));
@@ -441,7 +424,7 @@
       const r=await api('/powens/connect',{method:'POST'});
       showResp(r);
       if(r.redirect_url){
-        localStorage.setItem(LS.k.connHint,'connected'); // mémo pour le retour
+        localStorage.setItem(LS.k.connHint,'connected');
         if(win) win.location.replace(r.redirect_url); else window.open(r.redirect_url,'_blank','noopener');
         log('Webview Powens ouverte');
       } else { if(win) win.close(); toast('redirect_url manquant'); setConn(''); }
@@ -468,22 +451,32 @@
       busy(e.target,true);
       const r=await api('/powens/accounts');
       showResp(r); log('accounts fetched');
-      if(r.accounts && r.accounts[0]){
-        $('txAccount').value = r.accounts[0].id; setLS(LS.k.txacc, r.accounts[0].id);
-        if(!$('accountId').value){ $('accountId').value = r.accounts[0].id; setLS(LS.k.acc, r.accounts[0].id); }
+
+      // Utilise default_account_id si fourni, sinon 1er dans accounts, sinon 1er dans all_accounts
+      const def = r.default_account_id
+        || (r.accounts && r.accounts[0] && r.accounts[0].id)
+        || (r.all_accounts && r.all_accounts[0] && r.all_accounts[0].id)
+        || '';
+
+      if(def){
+        $('txAccount').value = def; setLS(LS.k.txacc, def);
+        if(!$('accountId').value){ $('accountId').value = def; setLS(LS.k.acc, def); }
       }
     } catch(err){ log('accounts error: '+err.message); toast('Erreur /accounts'); }
     finally{ busy(e.target,false); } };
 
   $('txns').onclick = async (e)=>{ try{
       busy(e.target,true);
-      const acc=($('txAccount').value||'').trim(); if(!acc) return alert('Renseignez un accountId');
-      const r=await api('/powens/transactions?accountId='+encodeURIComponent(acc));
-      showResp(r); log('transactions fetched for '+acc);
+      const acc=($('txAccount').value||'').trim(); // facultatif
+      const url = acc ? ('/powens/transactions?accountId='+encodeURIComponent(acc)) : '/powens/transactions';
+      const r=await api(url);
+      showResp(r); log('transactions fetched (accountId='+ (r.accountId || acc || 'auto') +')');
+      // Si le worker a choisi un compte par défaut, mémorise-le
+      if(r && r.accountId && !acc){ $('txAccount').value = r.accountId; setLS(LS.k.txacc, r.accountId); }
     } catch(err){ log('txns error: '+err.message); toast('Erreur /transactions'); }
     finally{ busy(e.target,false); } };
 
-  // Intents (dans le details repliable)
+  // Intents
   $('btnLatest').onclick = async (e)=>{ try{
       busy(e.target,true);
       const r=await api('/latest-intent?merchant='+merchant);
@@ -536,20 +529,36 @@
     } catch(err){ log('nfc error: '+err.message); toast('Erreur /nfc/pay'); }
     finally{ busy(e.target,false); } };
 
-  // Tx targets
+  // Tx targets (facultatif : laisse vide pour défaut)
   $('btnTargets').onclick = async (e)=>{ try{
       busy(e.target,true);
-      const acc = ($('accountId').value||$('txAccount').value||'').trim(); if(!acc) return alert('Choisissez un accountId');
+      const acc = ($('accountId').value||$('txAccount').value||'').trim();
       const limit= ($('limitTargets').value||'100').trim(); setLS(LS.k.lim, limit);
-      const r = await api('/powens/tx-targets?accountId='+encodeURIComponent(acc)+'&limit='+encodeURIComponent(limit));
-      showResp(r); renderTargets(r && r.targets || []);
+      const url = '/powens/tx-targets' + (acc ? ('?accountId='+encodeURIComponent(acc)+'&limit='+encodeURIComponent(limit)) : ('?limit='+encodeURIComponent(limit)));
+      const r = await api(url);
+      showResp(r);
+      renderTargets(r && r.targets || [], r && r.accountId);
+      // mémorise l’accountId effectivement utilisé si renvoyé
+      if(r && r.accountId && !acc){ $('txAccount').value = r.accountId; setLS(LS.k.txacc, r.accountId); }
     } catch(err){ log('tx-targets error: '+err.message); toast('Erreur /powens/tx-targets'); }
     finally{ busy(e.target,false); } };
   $('btnAccountsMirror').onclick = ()=> $('listAccounts').click();
 
-  function renderTargets(list){
+  function renderTargets(list, usedAccountId){
     const host=$('targets'); host.innerHTML='';
-    if(!list.length){ host.innerHTML='<span class="subtitle">Aucune cible.</span>'; return; }
+    if(usedAccountId){
+      const hint=document.createElement('div');
+      hint.className='subtitle';
+      hint.textContent='Compte utilisé : '+usedAccountId;
+      host.appendChild(hint);
+    }
+    if(!list.length){
+      const em=document.createElement('span');
+      em.className='subtitle';
+      em.textContent='Aucune cible.';
+      host.appendChild(em);
+      return;
+    }
     list.slice(0,60).forEach(t=>{
       const btn=document.createElement('button');
       btn.className='btn btn-ghost'; btn.style.borderRadius='999px'; btn.style.padding='8px 10px'; btn.style.fontSize='12px';
